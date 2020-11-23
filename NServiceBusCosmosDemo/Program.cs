@@ -44,13 +44,17 @@ namespace NServiceBusCosmosDemo
                         .GetSection("Cosmos")
                         .Get<CosmosConfiguration>();
                     var cosmosClient = new CosmosClient(config.AccountEndpoint, config.AuthKey);
+                    var defaultContainerInformation = TenantContainerInformation.Default;
 
                     endpointConfiguration.UsePersistence<CosmosPersistence>()
                         .CosmosClient(cosmosClient)
                         .DatabaseName(config.DatabaseName)
-                        .DefaultContainer("Quotes", "/QuoteNumber");
+                        .DefaultContainer(defaultContainerInformation.ContainerName,
+                            defaultContainerInformation.PartitionKeyPath);
                     endpointConfiguration.EnableOutbox();
                     endpointConfiguration.Pipeline.Register(new QuoteNumberAsPartitionKeyBehavior.Registration());
+                    endpointConfiguration.Pipeline.Register(new PremiumTenantContainerBehavior(),
+                        "Provides a non-default container for premium tenants");
                     // End of Cosmos persistence configuration
 
                     return endpointConfiguration;
