@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>dotnet-NServiceBusCosmosDemo-7DF89C94-4B0A-4232-AC1D-9B9E41D5D130</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.15.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.10" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.9" />
+        <PackageReference Include="NServiceBus" Version="7.4.4" />
+        <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0" />
+        <PackageReference Include="NServiceBus.Newtonsoft.Json" Version="2.2.0" />
+        <PackageReference Include="NServiceBus.Persistence.CosmosDB" Version="0.1.1" />
+    </ItemGroup>
+</Project>
