@@ -1,6 +1,4 @@
-using System;
 using System.Threading.Tasks;
-using Microsoft.Azure.Cosmos;
 using NServiceBus;
 using NServiceBusCosmosDemo.Commands;
 using NServiceBusCosmosDemo.Domain;
